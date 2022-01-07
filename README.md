@@ -1,7 +1,7 @@
 The app is using the mongoDB cloud solution 'Atlas'. 
 
 To run the web app on a localhost follow these steps:
-1. Create a mongoDB atlas database (cloud.mongodb.com).
+1. Create a mongoDB atlas database (https://cloud.mongodb.com).
 
 2. Connect to the database. Within atlas choose the option 'connect your application'. 
   Then copy pase the connection string (with adapted user and password string) into the server.js file (mongoose.connect("")) (line 16). 
