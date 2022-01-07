@@ -1,4 +1,4 @@
-The app is using the mongoDB cloud solution 'atlas'. 
+The app is using the mongoDB cloud solution 'Atlas'. 
 
 To run the web app on a localhost follow these steps:
 1. Create a mongoDB atlas database (cloud.mongodb.com).
