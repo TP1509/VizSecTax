@@ -13,9 +13,10 @@ To run the web app on a localhost follow these steps:
         nodemon server.js
 
         npm start
+       
 
-        If successful, the development server should start on localhost:3000/ within your browser.  
-        Otherwise:
+    If successful, the development server should start on localhost:3000/ within your browser.  
+    Otherwise:
 
 4. If necessary, install missing node packages, as the node_modules are not pushed to this repository (e.g., axios, bootstrap, mongoose, ..). Installing express may cover the issues:
 
