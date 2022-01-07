@@ -6,7 +6,7 @@ To run the web app on a localhost follow these steps:
 2. Connect to the database. Within atlas choose the option 'connect your application'. 
   Then copy pase the connection string (with adapted user and password string) into the server.js file (mongoose.connect("")) (line 16). 
   
-  Note that if you have special characters in your password, you must encode those characters (for further information check https://docs.atlas.mongodb.com/troubleshoot-connection/).
+    Note that if you have special characters in your password, you must encode those characters (for further information check https://docs.atlas.mongodb.com/troubleshoot-connection/).
 
 3. Try to start the app, run the following two commands in two terminals
 
