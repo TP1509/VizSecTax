@@ -18,7 +18,7 @@ export default function App() {
   const [lastfilteredData, setfilteredData] = useState([]);
   var [results_counter] = useState('');
   const category_separator = '+';
-  const results_width = '18rem';
+  const results_width = '35rem';
   
 
 
@@ -33,7 +33,6 @@ export default function App() {
 
   //Deleting Objects
   const deleteObject = (obj) =>{
-    //console.log(obj.shortTitle)
     if (window.confirm('Delete ' + obj.shortTitle + ' (' + obj.year + ') from the database?'))
     {
     axios.post("http://localhost:2000/api/data/delete", {obj})
@@ -53,9 +52,9 @@ export default function App() {
         <div className="card">
           <div className="card-body">
             <h5 className="card-title" >{obj.shortTitle} ({obj.year})</h5>
-            <small className=""><em>by. {obj.author}</em></small><br />
+            <medium className="">{obj.author}</medium><br />
             <small className="border">{(obj.categories).join(category_separator)}</small>
-            <p className="card-text">{obj.reference}</p>
+            <p className="card-text"><em>{obj.reference}</em></p>
             <p className="card-text">URL:  <a href={obj.URL} target="_blank" rel="noreferrer" > {obj.URL}</a> </p>
             <p className="card-text">Created at {dateFormat(obj.created, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</p>
             <div align="center"><button className="btn btn-outline-danger" id="deleteObject" onClick={(e) => deleteObject(obj, e)}><i className="fa fa-trash"></i> Delete</button></div>
@@ -72,9 +71,9 @@ export default function App() {
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">{obj.shortTitle} ({obj.year}) </h5>
-            <small className=""><em>by. {obj.author}</em></small><br />
+            <medium className="">{obj.author}</medium><br />
             <small className="border">{(obj.categories).join(category_separator)}</small>
-            <p className="card-text">{obj.reference}</p>
+            <p className="card-text"><em>{obj.reference}</em></p>
             <p className="card-text">URL:  <a href={obj.URL} target="_blank" rel="noreferrer" >  {obj.URL}</a> </p>
             <p className="card-text">Created at {dateFormat(obj.created, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</p>
             <div align="center"><button className="btn btn-outline-danger" id="deleteObject" onClick={(e) => deleteObject(obj, e)}><i className="fa fa-trash"></i> Delete</button></div>
@@ -105,7 +104,7 @@ export default function App() {
     var i = filteredCategory.indexOf(a.target.value);
       if (i === -1) {
         console.log('Add neue Categorie')
-        // Wenn filter Leer filter von allen Daten
+        // Check if filter is empty
         if (filteredCategory.length === 0){
           filteredCategory.push(a.target.value);
           console.log('Filter leer');
@@ -115,7 +114,7 @@ export default function App() {
             console.log('lastfilteredData:', lastfilteredData);
             console.log('filteredcategory:', filteredCategory);
         }
-        // Wenn Filter bereits vorhanden, filter von bereits Gefilterten Daten (komplexe Filter)
+        // If filter is not empty
         else {
           filteredCategory.push(a.target.value);
           console.log('Filter vorhanden');
@@ -125,7 +124,7 @@ export default function App() {
             setfilteredData(filteredData) 
             console.log('filteredData:', filteredData);
           }
-          // Alert, wenn zusätzlicher Filter keine Änderungen ergibt
+          // Alert if no changes were detected
           if (filteredData.length === lastfilteredData.length){
               alert("No changes to results were detected.\nThis might be the case if all current results contain the last added characterization.\n→You can keep on filtering.");
               //filter_reset()
@@ -145,7 +144,7 @@ export default function App() {
     console.log('Entferne letzte Categorie')
     filteredCategory.splice(i, 1);
     console.log('filteredcategory:', filteredCategory);
-      //Wenn kein Filter mehr ausgewählt zeige alle results
+      // If filter is empty show all results 
     if (filteredCategory.length === 0){
       console.log('Filter leer Zeige alle');
       setfilteredData(allData)
@@ -262,7 +261,7 @@ handleEmptyResults();
         <Modal.Body>
           <form className="form-horizontal" id="forminput">
             <div className="form-group">
-              <label htmlFor="inputEntryTitle" className="col-sm-2 control-label">Short title*</label>
+              <label htmlFor="inputEntryTitle" className="col-sm-2 control-label">Title*</label>
               <div className="col">
                 <input type="text" className="form-control form-mandatory " id="inputEntryTitle" placeholder="e.g., Vizualization for Cyber security" onChange={(e) => setShortTitle(e.target.value)} />
               </div>
@@ -436,7 +435,7 @@ handleEmptyResults();
             <div className="d-flex justify-content-center flex-wrap">
 
 
-{/*copy pase block to add new dimensions / characterizations to add new entry LEVEL 2*/}  
+{/*copy pase block to add new dimensions / characterizations to add new entry LEVEL 3*/}  
 <div className="text-center  m-4">
                     <h4 className="text-center ">Data</h4>
                     <input name="table" value="table" type="checkbox" className="btn-check" id="btn-check-outlined44" autoComplete="off" onClick={handleCategory} />
@@ -511,7 +510,7 @@ handleEmptyResults();
             <div className="d-flex justify-content-center flex-wrap">
 
 
-{/*copy pase block to add new dimensions / characterizations to add new entry LEVEL 2*/}  
+{/*copy pase block to add new dimensions / characterizations to add new entry LEVEL 3*/}  
 <div className="text-center  m-4">
                     <h4 className="text-center ">Data Model</h4>
                     <input name="discrete" value="discrete" type="checkbox" className="btn-check" id="btn-check-outlined71" autoComplete="off" onClick={handleCategory} />
@@ -862,14 +861,10 @@ handleEmptyResults();
       </div>
       </form>
 
-      {/* Optional footer*/}
+      {/* Footer*/}
       <footer>
-          <p align="right"><em>Master's thesis</em> <br>
-          </br><em>Development of a Taxonomy to classify Visualization Approaches for Cybersecurity</em> <br>
-          </br><em>Tobias Preindl, 2021</em><br>
-          </br><em>Supervision: Fabian Böhm, Prof. Dr. Günther Pernul</em><br>
-          </br><em>Department of Information Systems, University of Regensburg</em><br>
-          </br><em>Version: x.x.2021</em></p>
+          <p align="right"><em>Taxonomy of VizSec</em> <br>
+          </br><em>Version: 1.0 (01/2022)</em></p>
       </footer>
     </div>
   )
