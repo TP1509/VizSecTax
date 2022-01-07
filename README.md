@@ -10,7 +10,7 @@ nodemon server.js
 npm start
 If successful, the development server should start on localhost:3000/ within your browser.  
 Otherwise:
-4. If necessary, install missing packages (e.g., axios, mongoose, ..)
+4. If necessary, install missing packages, as the node_modules are not pushed to this repository (e.g., axios, bootstrap, mongoose, ..)
 5. If the database throws an error while connecting, the reason may be a missing IP whitelist. 
 To add your IP, go within mongoDB Atlas > Security > Network Access > Add your IP Address.
 
