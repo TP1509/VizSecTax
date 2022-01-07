@@ -8,7 +8,7 @@ To run the web app on a localhost follow these steps:
   
     Note that if you have special characters in your password, you must encode those characters (for further information check https://docs.atlas.mongodb.com/troubleshoot-connection/).
 
-3. Try to start the app, run the following two commands in two terminals
+3. Try to start the app, run the following two commands in two terminals:
 
 
         nodemon server.js
