@@ -1,4 +1,5 @@
 The VizSecTax web application, is an app to provide an overview of visualization techniques for cybersecurity (VizSec) via a taxonomy.
+
 The app is using the mongoDB cloud solution 'Atlas'. 
 
 To run the web app on a localhost follow these steps:
